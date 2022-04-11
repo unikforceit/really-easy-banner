@@ -86,8 +86,6 @@ final class REB
     {
 
         new UnikForce\REB\Admin\Admin();
-        new UnikForce\REB\Frontend\Frontend();
-        new UnikForce\REB\Includes\Includes();
 
     }
 
