@@ -19,7 +19,7 @@ require_once (__DIR__ . '/vendor/autoload.php');
 include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 
 /**
- * Class UnikForce
+ * Class REB
  */
 final class REB
 {
@@ -86,6 +86,7 @@ final class REB
     {
 
         new UnikForce\REB\Admin\Admin();
+        new UnikForce\REB\Frontend\Frontend();
 
     }
 
@@ -113,7 +114,7 @@ final class REB
     public function __clone()
     {
         // Cloning instances of the class is forbidden
-        _doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?', 'really-easy-banner'), '1.0.0');
+        _doing_it_wrong(__FUNCTION__, __('Cheating&#8217; huh?', 'really-easy-banner'), '1.0.0');
     }
 
     /**
@@ -123,7 +124,7 @@ final class REB
     public function __wakeup()
     {
         // Unserializing instances of the class is forbidden
-        _doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?', 'really-easy-banner'), '1.0.0');
+        _doing_it_wrong(__FUNCTION__, __('Cheating&#8217; huh?', 'really-easy-banner'), '1.0.0');
     }
 
 }
