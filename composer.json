@@ -6,7 +6,12 @@
       "UnikForce\\REB\\Admin\\": "admin/",
       "UnikForce\\REB\\Frontend\\": "frontend/",
       "UnikForce\\REB\\Includes\\": "includes/"
-    }
+    },
+    "files": [
+      "includes/Helper.php",
+      "includes/codestar-framework/codestar-framework.php",
+      "admin/Options.php"
+    ]
   },
   "authors": [
     {

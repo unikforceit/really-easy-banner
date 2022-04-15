@@ -85,7 +85,9 @@ final class REB
     public function init_plugin()
     {
 
-        new UnikForce\REB\Admin\Admin();
+        if(is_admin()){
+            new UnikForce\REB\Admin\Admin();
+        }
         new UnikForce\REB\Frontend\Frontend();
 
     }

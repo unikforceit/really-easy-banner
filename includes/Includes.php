@@ -1,6 +1,8 @@
 <?php
+
 namespace UnikForce\REB\Includes;
 
-class Includes{
+class Includes
+{
 
 }

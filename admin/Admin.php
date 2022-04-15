@@ -60,6 +60,24 @@ class Admin
     }
 
     /**
+     * Add powered by text in admin footer
+     *
+     * @param string $text Default footer text.
+     *
+     * @return string
+     */
+    function admin_footer_text($text)
+    {
+        if (!$this->is_plugin_page()) {
+            return $text;
+        }
+
+        $text = '<i><a href="' . esc_url($this->generate_web_link('admin_footer')) . '" title="' . esc_attr(__('Visit UnikForce Elementor WooCommerce  page for more info', 'unikforce')) . '" target="_blank">UnikForce Elementor WooCommerce </a> v' . UNIKFORCE_VERSION . '. Please <a target="_blank" href="https://wordpress.org/support/plugin/unikforce-addons/reviews/#new-post" title="Rate the plugin">rate the plugin <span>★★★★★</span></a> to help us spread the word. Thank you from the WP Reset team!</i>';
+
+        return $text;
+    } // is_plugin_page
+
+    /**
      * Test if we're on unikforce's admin page
      *
      * @return bool
@@ -73,7 +91,7 @@ class Admin
         } else {
             return false;
         }
-    } // is_plugin_page
+    } // generate_web_link
 
     /**
      * Helper function for generating links
@@ -110,24 +128,6 @@ class Admin
         $out = $base_url . $page . '?' . http_build_query($parts, '', '&amp;') . $anchor;
 
         return $out;
-    } // generate_web_link
-
-    /**
-     * Add powered by text in admin footer
-     *
-     * @param string $text Default footer text.
-     *
-     * @return string
-     */
-    function admin_footer_text($text)
-    {
-        if (!$this->is_plugin_page()) {
-            return $text;
-        }
-
-        $text = '<i><a href="' . esc_url($this->generate_web_link('admin_footer')) . '" title="' . esc_attr(__('Visit UnikForce Elementor WooCommerce  page for more info', 'unikforce')) . '" target="_blank">UnikForce Elementor WooCommerce </a> v' . UNIKFORCE_VERSION . '. Please <a target="_blank" href="https://wordpress.org/support/plugin/unikforce-addons/reviews/#new-post" title="Rate the plugin">rate the plugin <span>★★★★★</span></a> to help us spread the word. Thank you from the WP Reset team!</i>';
-
-        return $text;
     } // admin_footer_text
 
 
