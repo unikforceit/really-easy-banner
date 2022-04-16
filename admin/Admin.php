@@ -12,16 +12,20 @@ class Admin
     {
         //add_filter('plugin_action_links_' . REB_PLUGIN_BASE, [$this, 'plugins_setting_links']);
         //add_filter('plugin_row_meta', array($this, 'plugin_meta_links'), 10, 2);
-        add_filter('admin_footer_text', array($this, 'admin_footer_text'));
-        add_action('admin_enqueue_scripts', [$this, 'admin_css']);
+        add_filter('admin_footer_text', [$this, 'admin_footer_text']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
     /**
      * Admin css Handler
      */
-    public function admin_css()
+    public function enqueue_assets()
     {
-        wp_enqueue_style('admin-style', UNIKFORCE_PL_URL . 'assets/css/admin.css', array(), filemtime(UNIKFORCE_PLUGIN_DIR_NAME . 'assets/css/admin.css'), 'all');
+        wp_register_style('reb-admin', REB_PL_URL . 'admin/assets/css/main.css', '', REB_VERSION, 'all');
+        wp_register_script('reb-admin', REB_PL_URL . 'admin/assets/js/main.js', ['jquery'], REB_VERSION, true);
+
+        wp_enqueue_script('reb-admin');
+        wp_enqueue_style('reb-admin');
     }
 
     /**
@@ -31,10 +35,10 @@ class Admin
      */
     public function plugins_setting_links($links)
     {
-        $settings_link = '<a href="' . admin_url('admin.php?page=unikforce') . '">' . esc_html__('Settings', 'unikforce') . '</a>';
+        $settings_link = '<a href="' . admin_url('admin.php?page=unikforce') . '">' . esc_html__('Settings', 'really-easy-banner') . '</a>';
         array_unshift($links, $settings_link);
         if (!is_plugin_active('really-easy-banner-pro/really-easy-banner-pro.php')) {
-            $links['unikforce'] = sprintf('<a href="https://unikforce.com" target="_blank" style="color: #39b54a; font-weight: bold;">' . esc_html__('Go Pro', 'unikforce') . '</a>');
+            $links['really-easy-banner'] = sprintf('<a href="https://unikforce.com" target="_blank" style="color: #39b54a; font-weight: bold;">' . esc_html__('Go Pro', 'really-easy-banner') . '</a>');
         }
         return $links;
     }
@@ -53,8 +57,8 @@ class Admin
             return $links;
         }
 
-        $links[] = '<a target="_blank" href="https://wordpress.org/support/plugin/unikforce-elementor-woocommerce" title="' . __('Get help', 'unikforce') . '">' . __('Support', 'unikforce') . '</a>';
-        $links[] = '<a target="_blank" href="https://wordpress.org/support/plugin/unikforce-elementor-woocommerce/reviews/#new-post" title="' . __('Rate the plugin', 'unikforce') . '">' . __('Rate the plugin ★★★★★', 'unikforce') . '</a>';
+        $links[] = '<a target="_blank" href="https://wordpress.org/support/plugin/really-easy-banner" title="' . __('Get help', 'really-easy-banner') . '">' . __('Support', 'really-easy-banner') . '</a>';
+        $links[] = '<a target="_blank" href="https://wordpress.org/support/plugin/really-easy-banner/reviews/#new-post" title="' . __('Rate the plugin', 'really-easy-banner') . '">' . __('Rate the plugin ★★★★★', 'really-easy-banner') . '</a>';
 
         return $links;
     }
@@ -72,7 +76,7 @@ class Admin
             return $text;
         }
 
-        $text = '<i><a href="' . esc_url($this->generate_web_link('admin_footer')) . '" title="' . esc_attr(__('Visit UnikForce Elementor WooCommerce  page for more info', 'unikforce')) . '" target="_blank">UnikForce Elementor WooCommerce </a> v' . UNIKFORCE_VERSION . '. Please <a target="_blank" href="https://wordpress.org/support/plugin/unikforce-addons/reviews/#new-post" title="Rate the plugin">rate the plugin <span>★★★★★</span></a> to help us spread the word. Thank you from the WP Reset team!</i>';
+        $text = '<i><a href="' . esc_url($this->generate_web_link('admin_footer')) . '" title="' . esc_attr(__('Visit UnikForce Elementor WooCommerce  page for more info', 'really-easy-banner')) . '" target="_blank">UnikForce Elementor WooCommerce </a> v' . REB_VERSION . '. Please <a target="_blank" href="https://wordpress.org/support/plugin/unikforce-addons/reviews/#new-post" title="Rate the plugin">rate the plugin <span>★★★★★</span></a> to help us spread the word. Thank you from the WP Reset team!</i>';
 
         return $text;
     } // is_plugin_page

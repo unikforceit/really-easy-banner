@@ -10,6 +10,7 @@ if (class_exists('CSF')) {
     // Create options
     CSF::createOptions($really_easy_banner, array(
         'menu_title' => 'Really Easy Banner',
+        'framework_title' => 'Really Easy Banner',
         'menu_slug' => 'really_easy_banner_options',
         'nav' => 'inline',
         'menu_position' => 3,
@@ -18,19 +19,42 @@ if (class_exists('CSF')) {
     //
     // Create a section
     CSF::createSection($really_easy_banner, array(
-        'title' => 'Layout',
+        'title' => 'General',
         'fields' => array(
 
             array(
-                'id' => 'banner_layout',
-                'type' => 'image_select',
-                'title' => 'Layout Select',
-                'options' => array(
-                    'banner-1' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
-                    'banner-2' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
-                    'banner-3' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
+                'id'          => 'banner_layout',
+                'type'        => 'select',
+                'title'       => 'Layout Select',
+                'placeholder' => 'Select an option',
+                'options'     => array(
+                    'layout1'  => 'Layout 1',
+                    'layout2'  => 'Layout 2',
+                    'layout3'  => 'Layout 3',
                 ),
-                'default' => 'banner-2'
+                'default'     => 'layout1'
+            ),
+            array(
+                'id'      => 'main_heading',
+                'type'    => 'text',
+                'title'   => 'Main Heading',
+                'default' => 'This is a banner simple view to with a link.For background & animation purchase our premium version'
+            ),
+            array(
+                'id'      => 'button_text',
+                'type'    => 'text',
+                'title'   => 'Button Text',
+                'default' => 'Click Here'
+            ),
+            array(
+                'id'    => 'button_link',
+                'type'  => 'link',
+                'title' => 'Button Link',
+            ),
+            array(
+                'id'    => 'background_img',
+                'type'  => 'media',
+                'title' => 'Background Image',
             ),
 
         )
